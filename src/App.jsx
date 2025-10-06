@@ -5,14 +5,26 @@ function App() {
   var [theme, setTheme] = useState("theme1");
 
   useEffect(() => {
-    const storedTheme = getTheme();
-    if (storedTheme) {
-      setTheme(storedTheme);
+    const prefersDarkMode =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    const savedTheme = getTheme();
+
+    if (savedTheme) {
+      setTheme(savedTheme);
+      document.body.className = savedTheme;
+    } else {
+      const initialTheme = prefersDarkMode ? "theme1" : "theme2";
+      setTheme(initialTheme);
+      document.body.className = initialTheme;
     }
-  }, []);
+  }, [setTheme]);
 
   useEffect(() => {
-    document.body.className = theme;
+    if (theme) {
+      document.body.className = theme;
+    }
   }, [theme]);
 
   function handleClick(e) {
@@ -34,17 +46,15 @@ function App() {
     setTheme(e.target.value);
     localStorage.setItem("theme", e.target.value);
   }
-
   function getTheme() {
-    localStorage.getItem("theme");
+    return localStorage.getItem("theme");
   }
 
   return (
     <>
-      <div className={`calculator ${theme}`}>
+      <div className={`calculator `}>
         <div className="calc">
           <div className="title">calc</div>
-
           <span className="them">THEME</span>
           <div className="radio">
             <div className="labels">

@@ -162,10 +162,6 @@
   --bg--eq--hover: #94fefa;
 }
 
-/* @media (prefers-color-scheme: theme3) {
- 
-} */
-
 body {
   background-color: var(--bg-main);
   font-family: "League Spartan", sans-serif;
@@ -197,9 +193,11 @@ body {
   border-radius: 50%;
 }
 .them {
-  font-size: 12px;
-
-  margin-top: 2.5vh;
+  font-size: 10px;
+  margin-top: 3%;
+  margin-left: auto;
+  text-align: right;
+  margin-right: 5%;
 }
 
 .themes {
