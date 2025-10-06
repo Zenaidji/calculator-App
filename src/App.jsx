@@ -1,9 +1,19 @@
-import { useState } from "react";
-
-import "./App.css";
+import { useState, useEffect } from "react";
 
 function App() {
   var [res, setRes] = useState("");
+  var [theme, setTheme] = useState("theme1");
+
+  useEffect(() => {
+    const storedTheme = getTheme();
+    if (storedTheme) {
+      setTheme(storedTheme);
+    }
+  }, []);
+
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
 
   function handleClick(e) {
     setRes(res + e.target.value);
@@ -20,10 +30,54 @@ function App() {
   function equals() {
     setRes(eval(res).toString());
   }
+  function toggleTheme(e) {
+    setTheme(e.target.value);
+    localStorage.setItem("theme", e.target.value);
+  }
+
+  function getTheme() {
+    localStorage.getItem("theme");
+  }
 
   return (
     <>
-      <div className="calculator">
+      <div className={`calculator ${theme}`}>
+        <div className="calc">
+          <div className="title">calc</div>
+
+          <span className="them">THEME</span>
+          <div className="radio">
+            <div className="labels">
+              <label htmlFor="theme1">1</label>
+              <label htmlFor="theme2">2</label>
+              <label htmlFor="theme3">3</label>
+            </div>
+
+            <div className="themes">
+              <input
+                type="radio"
+                onChange={toggleTheme}
+                id="theme1"
+                value="theme1"
+                checked={theme === "theme1"}
+              />
+              <input
+                type="radio"
+                onChange={toggleTheme}
+                id="theme2"
+                value="theme2"
+                checked={theme === "theme2"}
+              />
+              <input
+                type="radio"
+                onChange={toggleTheme}
+                id="theme3"
+                value="theme3"
+                checked={theme === "theme3"}
+              />
+            </div>
+          </div>
+        </div>
         <div className="display">
           <div className="display-inner">{res}</div>
         </div>
