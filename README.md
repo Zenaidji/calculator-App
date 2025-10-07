@@ -10,6 +10,7 @@ This is a solution to the [Calculator app challenge on Frontend Mentor](https://
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
+  - [Deployment](#deployment)
   - [What I learned](#what-i-learned)
   - [Useful resources](#useful-resources)
 - [Author](#author)
@@ -45,8 +46,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Github repository](https://github.com/Zenaidji/calculator-App)
+- Live Site URL: [Calculator app](https://zenaidji.github.io/calculator-App/)
 
 ## My process
 
@@ -57,6 +58,40 @@ Users should be able to:
 - Flexbox
 - CSS Grid
 - [React](https://reactjs.org/) – JavaScript library used with Vite
+
+### Deployment
+
+This project is deployed using **GitHub Pages** with the `gh-pages` package.
+
+#### Configuration
+
+1. **Install the `gh-pages` dependency**
+
+   ```bash
+   npm install gh-pages --save-dev
+   ```
+
+2. **Add the following lines to your `package.json`:**
+
+   ```json
+   {
+     "scripts": {
+       "predeploy": "npm run build",
+       "deploy": "gh-pages -d dist"
+     }
+   }
+   ```
+
+#### Build and deploy
+
+to deploy the app run the following command
+
+```bash
+npm run deploy
+```
+
+The page will be available at `https://Zenaidji.github.io/yourRepository/`.  
+For example: [https://Zenaidji.github.io/calculator-App/](https://Zenaidji.github.io/calculator-App/)
 
 ### What I learned
 
